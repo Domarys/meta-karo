@@ -27,6 +27,12 @@ if [ -z "$BASH_VERSION" ];then
     return 1
 fi
 
+if [[ "$(type -t cp)" = "alias" ]]; then
+    unalias cp
+elif [[ "$(type -t cp)" = "function" ]]; then
+    unset -f cp
+fi
+
 usage()
 {
     echo -e "\nUsage: source $PROGNAME <build-dir>
