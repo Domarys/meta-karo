@@ -1,11 +1,13 @@
 require recipes-bsp/u-boot/u-boot.inc
 
 DESCRIPTION = "U-Boot for Ka-Ro electronics TX Computer-On-Modules."
-LICENSE = "GPLv2+"
-LIC_FILES_CHKSUM_mx6 = "file://Licenses/README;md5=0507cd7da8e7ad6d6701926ec9b84c95"
-LIC_FILES_CHKSUM_stm32mp1 = "file://Licenses/README;md5=30503fd321432fc713238f582193b78e"
 
-PROVIDES += "u-boot"
+LICENSE = "CLOSED"
+#LICENSE = "GPLv2+"
+#LIC_FILES_CHKSUM_mx6 = "file://Licenses/README;md5=0507cd7da8e7ad6d6701926ec9b84c95"
+#LIC_FILES_CHKSUM_stm32mp1 = "file://Licenses/README;md5=30503fd321432fc713238f582193b78e"
+
+PROVIDES = "u-boot"
 
 DEPENDS_append = " bc-native"
 DEPENDS_append_stm32mp1 = " bison-native"
@@ -25,7 +27,7 @@ SCMVERSION ??= "y"
 LOCALVERSION ??= "+karo"
 
 UBOOT_LOCALVERSION = "${LOCALVERSION}"
-
+UBOOT_INITIAL_ENV = ""
 do_compile_prepend() {
 	if [ "${SCMVERSION}" = "y" ]; then
 		# Add GIT revision to the local version
